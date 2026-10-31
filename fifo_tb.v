@@ -105,11 +105,21 @@ module tb_fifo_sync();
 
         $display($time, "\n SCENARIO 1");
 
+        write_data(1);
         write_data(10);
-        write_data(55);
+        write_data(100);
 
         read_data();
         read_data();
+        read_data();
+        
+ $display($time, "\n SCENARIO 2");
+    for(i = 0; i <= FIFO_DEPTH; i = i + 1) begin
+            write_data(2**i);
+            read_data();
+        end
+
+
 
         $display($time, "\n SCENARIO 3");
 
